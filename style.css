@@ -2,7 +2,7 @@
 :root {
     --primary-color: #ffffff;
     --secondary-color: #888;
-    --accent-color: #3498db;
+    --accent-color:#db6600;
     --bg-color: #000000;
     --card-bg: #111111;
 }
@@ -251,4 +251,20 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+.read-more {
+    color:#b0560c; /* Change this to your desired color */
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.read-more:hover {
+    color: #ff7f17; /* Change hover color (gold example) */
+    gap: 0.8rem;
 }

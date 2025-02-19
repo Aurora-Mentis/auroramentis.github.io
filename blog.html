@@ -81,6 +81,55 @@
             line-height: 1.8;
         }
 
+        /* Author Section */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .author-box img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .know-me-btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--accent-color, #3498db);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .know-me-btn:hover {
+            background: #2980b9;
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -114,6 +163,11 @@
             #blog-content h1 {
                 font-size: 2.2rem;
             }
+
+            .author-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -121,7 +175,18 @@
     <div class="container">
         <button onclick="goBack()">← Back</button>
         <div id="blog-content"></div>
+        
+        <!-- Author Section -->
+        <div class="author-box">
+            <img id="author-img" src="default-author.jpg" alt="Author">
+            <div class="author-info">
+                <h3 id="author-name">Author Name</h3>
+                <p id="author-bio">A passionate writer.</p>
+            </div>
+            <button class="know-me-btn" id="know-me-btn">Know Me</button>
+        </div>
     </div>
+
     <script>
         function goBack() {
             document.body.classList.add("fade-out");
@@ -129,6 +194,35 @@
                 window.location.href = "index.html";
             }, 500);
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const blogId = localStorage.getItem("selectedPost");
+            const blogContentDiv = document.getElementById("blog-content");
+            const authorImg = document.getElementById("author-img");
+            const authorName = document.getElementById("author-name");
+            const authorBio = document.getElementById("author-bio");
+            const knowMeBtn = document.getElementById("know-me-btn");
+
+            import("./posts.js").then(({ default: blogPosts }) => {
+                const post = blogPosts.find(p => p.id == blogId);
+                if (post) {
+                    blogContentDiv.innerHTML = `
+                        <h1>${post.title}</h1>
+                        <p><em>${post.date} - ${post.readTime}</em></p>
+                        <img src="${post.coverImage}" alt="Cover Image" style="width:100%; border-radius:10px;">
+                        <p>${post.content}</p>
+                    `;
+
+                    authorImg.src = post.authorImage || "default-author.jpg";
+                    authorName.textContent = post.author;
+                    knowMeBtn.addEventListener("click", () => {
+                        window.location.href = "about.html";
+                    });
+                } else {
+                    blogContentDiv.innerHTML = "<p>Blog post not found.</p>";
+                }
+            });
+        });
     </script>
 </body>
 </html>

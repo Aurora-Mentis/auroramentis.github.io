@@ -15,12 +15,13 @@ function loadPosts() {
             <div class="post-content-wrapper">
                 <h2 class="post-title">${post.title}</h2>
                 <div class="post-meta">
+                    <span>${post.author}</span>
                     <span>${post.date}</span>
-                    <span>${post.readTime}</span>
                 </div>
                 <div class="post-content">
                     <p>${post.content.substring(0, 100)}...</p>
                 </div>
+                               
                 <a href="#" class="read-more">Read More →</a>
             </div>
         </article>

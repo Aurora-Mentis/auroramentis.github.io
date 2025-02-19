@@ -9,6 +9,7 @@ const blogPosts = [
         coverImage: 'assets/background.jpeg',
         excerpt: 'A comprehensive guide for beginners starting their web development journey...',
         author: 'John Doe',
+        authorImage: 'assets/authors/john.jpg', // New field
         featured: true
     },
     {
@@ -21,6 +22,7 @@ const blogPosts = [
         coverImage: 'assets/minimalist.jpg',
         excerpt: 'Learn the fundamental principles of minimalist design...',
         author: 'Jane Smith',
+        authorImage: 'assets/authors/jane.jpg', // New field
         featured: false
     },
     {
@@ -33,6 +35,7 @@ const blogPosts = [
         coverImage: 'assets/travel.jpg',
         excerpt: 'Master the art of travel photography with these professional tips...',
         author: 'Mike Johnson',
+        authorImage: 'assets/authors/mike.jpg', // New field
         featured: true
     }
 ];
