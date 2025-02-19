@@ -20,8 +20,7 @@ function loadPosts() {
                 </div>
                 <div class="post-content">
                     <p>${post.content.substring(0, 100)}...</p>
-                </div>
-                               
+                </div>         
                 <a href="#" class="read-more">Read More →</a>
             </div>
         </article>
